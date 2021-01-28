@@ -4,6 +4,8 @@ import './App.css';
 
 // https://github.com/reactjs/react-modal
 
+Modal.setAppElement('#root') // for screen rendering
+
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
@@ -11,8 +13,18 @@ function App() {
       <button onClick={() => setModalIsOpen(true)}> Open Modal</button>
       <Modal 
           isOpen={modalIsOpen} 
-          shouldCloseOnOverlayClick={true}
+          shouldCloseOnOverlayClick={true} // set to false to disable click away
           onRequestClose={()=> setModalIsOpen(false)}
+          style = {
+            {
+              overlay: {
+                backgroundColor: 'grey'  
+              },
+              content: {
+                color: 'orange'
+              }
+            }
+          }
         >
         <h2>Modal Title</h2>
         <p>Modal Body</p>
